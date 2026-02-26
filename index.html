@@ -83,6 +83,9 @@
       .side > h2#searchTitle{display:none} /* Hide duplicate title on mobile */
       .fab-btn{display:flex}
       .mobile-header{display:flex}
+      .facts{grid-template-columns:90px 1fr}
+      .char-row{grid-template-columns:auto 1fr;grid-template-areas:"role name" "note note"}
+      .char-role{grid-area:role}.char-name{grid-area:name}.char-note{grid-area:note;margin-top:4px;font-size:.9em;line-height:1.4}
     }
     @keyframes fadeIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
     @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
