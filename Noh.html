@@ -1,0 +1,421 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>能楽演目データベース | 演目詳細検索</title>
+  <meta name="description" content="能楽の演目名を検索し、あらすじ・登場人物・作成者・成立年代・流儀・特徴を閲覧できるローカルデータベース" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@500;700&family=Zen+Kaku+Gothic+New:wght@400;500;700&display=swap" rel="stylesheet" />
+  <style>
+    :root{--bg:#f5efdf;--paper:rgba(255,252,244,.88);--paper2:rgba(255,255,255,.82);--ink:#1a1917;--muted:#646056;--line:rgba(26,25,23,.12);--acc:#a63b18;--acc2:#1f5d65;--shadow:0 16px 36px rgba(41,28,11,.12)}
+    *{box-sizing:border-box}html,body{margin:0;padding:0;color:var(--ink);font-family:"Zen Kaku Gothic New",sans-serif;background:radial-gradient(circle at 10% 4%,rgba(166,59,24,.12),transparent 40%),radial-gradient(circle at 86% 10%,rgba(31,93,101,.12),transparent 44%),linear-gradient(180deg,#f7f2e7,#efe2c2);line-height:1.6}
+    body::before{content:"";position:fixed;inset:0;pointer-events:none;opacity:.17;background-image:linear-gradient(to right,rgba(0,0,0,.04) 1px,transparent 1px),linear-gradient(to bottom,rgba(0,0,0,.04) 1px,transparent 1px);background-size:22px 22px}
+    .wrap{width:min(1220px,calc(100% - 18px));margin:10px auto 26px;position:relative}
+    .hero,.panel{border:1px solid var(--line);border-radius:20px;background:var(--paper);box-shadow:var(--shadow);backdrop-filter:blur(6px)}
+    .hero{padding:18px 16px;background:linear-gradient(135deg,rgba(255,252,244,.95),rgba(249,237,210,.93))}
+    .hero h1{margin:0;font-family:"Shippori Mincho",serif;font-size:clamp(1.5rem,3.7vw,2.25rem)}
+    .hero p{margin:.5rem 0 0;color:var(--muted)}
+    .badges{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}.badge{font-size:.8rem;padding:5px 9px;border-radius:999px;border:1px solid rgba(31,93,101,.18);background:rgba(255,255,255,.72);color:#21494f}
+    .layout{display:grid;grid-template-columns:370px 1fr;gap:12px;margin-top:12px}
+    .panel{padding:12px}
+    .side{position:sticky;top:6px;align-self:start}
+    h2{margin:0 0 8px;font-size:1rem}
+    .label{display:block;font-size:.82rem;color:var(--muted);margin-bottom:5px}
+    .field{margin-bottom:10px}
+    input[type=search]{width:100%;border:1px solid rgba(26,25,23,.15);border-radius:12px;padding:10px 12px;background:#fff;font-size:.96rem}
+    input[type=search]:focus{outline:none;border-color:rgba(166,59,24,.5);box-shadow:0 0 0 4px rgba(166,59,24,.11)}
+    .toolbar{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:8px}
+    button{cursor:pointer;border-radius:12px;padding:8px 10px;font-weight:700;border:1px solid transparent;font-size:.84rem}
+    .btn-primary{background:linear-gradient(135deg,#b63f1c,#913514);color:#fff;box-shadow:0 8px 16px rgba(145,53,20,.22)}
+    .btn-ghost{background:rgba(255,255,255,.86);border-color:rgba(26,25,23,.12);color:var(--ink)}
+    .chips{display:flex;gap:6px;flex-wrap:wrap;margin:8px 0 10px}
+    .chip{padding:5px 8px;border-radius:999px;border:1px solid rgba(31,93,101,.18);background:rgba(31,93,101,.07);font-size:.78rem;color:#1f4950;cursor:pointer}
+    .chip.active{background:rgba(166,59,24,.08);border-color:rgba(166,59,24,.22);color:#7c2a14}
+    .meta-note{font-size:.78rem;color:var(--muted);margin-bottom:8px}
+    .count{font-size:.83rem;color:var(--muted);margin-bottom:8px}
+    .list{display:grid;gap:8px;max-height:68vh;overflow:auto;padding-right:2px}
+    .item{display:block;width:100%;text-align:left;border:1px solid rgba(26,25,23,.08);background:var(--paper2);border-radius:14px;padding:10px 10px}
+    .item:hover{border-color:rgba(166,59,24,.2)}
+    .item.active{border-color:rgba(166,59,24,.38);box-shadow:inset 0 0 0 1px rgba(166,59,24,.16);background:rgba(255,251,245,.95)}
+    .item .t{font-family:"Shippori Mincho",serif;font-size:1rem;line-height:1.35}
+    .item .k{font-size:.76rem;color:var(--muted);margin-top:2px}
+    .item .g{margin-top:6px;font-size:.75rem;display:inline-block;padding:3px 7px;border-radius:999px;background:rgba(31,93,101,.08);color:#1d4a51;border:1px solid rgba(31,93,101,.16)}
+    .empty{border:1px dashed rgba(26,25,23,.18);border-radius:14px;background:rgba(255,255,255,.56);padding:12px;color:var(--muted)}
+    .detail-head{display:flex;justify-content:space-between;align-items:flex-start;gap:8px;flex-wrap:wrap}
+    .detail-title{margin:0;font-family:"Shippori Mincho",serif;font-size:clamp(1.25rem,2.7vw,1.7rem);line-height:1.35}
+    .detail-kana{margin:4px 0 0;color:var(--muted);font-size:.9rem}
+    .tags{display:flex;gap:6px;flex-wrap:wrap;margin-top:8px}.tag{font-size:.77rem;padding:4px 8px;border-radius:999px;border:1px solid rgba(26,25,23,.08);background:rgba(255,255,255,.74)}.tag.genre{background:rgba(31,93,101,.08);border-color:rgba(31,93,101,.17);color:#1d4a51}
+    .section{margin-top:12px;padding-top:10px;border-top:1px solid rgba(26,25,23,.07)}
+    .section h3{margin:0 0 8px;font-size:.94rem;color:#29373a}
+    .facts{display:grid;grid-template-columns:160px 1fr;gap:8px 12px;border:1px solid rgba(26,25,23,.07);border-radius:14px;background:rgba(255,255,255,.62);padding:10px}
+    .facts .k{color:#4e473d;font-weight:700}.facts .v{color:#2f2c28}
+    .summary-box{border:1px solid rgba(26,25,23,.08);border-radius:14px;background:rgba(255,255,255,.62);padding:10px;white-space:pre-wrap}
+    .chars{border:1px solid rgba(26,25,23,.07);border-radius:14px;background:rgba(255,255,255,.62);overflow:hidden}
+    .char-row{display:grid;grid-template-columns:120px 190px 1fr;gap:8px;padding:9px 10px;border-top:1px solid rgba(26,25,23,.06)}
+    .char-row:first-child{border-top:none}.char-role{font-weight:700;color:#403b34}.char-name{color:#1e2b2f}.char-note{color:#4e4a43}
+    .feature-list{margin:0;padding-left:18px}.feature-list li{margin:5px 0}
+    .related-head{display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap}
+    .related-status{font-size:.82rem;color:var(--muted)}
+    .related-list{display:grid;gap:8px;margin-top:8px}
+    .related-item{display:grid;grid-template-columns:76px 1fr;gap:8px;border:1px solid rgba(26,25,23,.07);border-radius:12px;background:rgba(255,255,255,.7);padding:8px}
+    .rthumb{width:76px;height:76px;border-radius:10px;border:1px solid rgba(26,25,23,.06);overflow:hidden;background:linear-gradient(180deg,rgba(31,93,101,.07),rgba(166,59,24,.06));display:grid;place-items:center}
+    .rthumb img{width:100%;height:100%;object-fit:cover;display:block}.rthumb span{font-size:.72rem;color:var(--muted)}
+    .related-item a{color:inherit;text-decoration:none}.related-item .rt{font-size:.88rem;font-weight:700;line-height:1.35}.related-item .rm{font-size:.76rem;color:var(--muted);margin-top:4px}.related-item .rb{display:flex;gap:6px;flex-wrap:wrap;margin-top:5px}
+    .mini{font-size:.72rem;padding:3px 7px;border-radius:999px;border:1px solid rgba(26,25,23,.08);background:rgba(255,255,255,.82)}
+    .warn{border:1px solid rgba(166,59,24,.18);background:rgba(166,59,24,.05);color:#7a2510;padding:9px 10px;border-radius:12px;font-size:.82rem}
+    .footer{margin-top:12px;color:var(--muted);font-size:.8rem}
+    .footer code{background:rgba(26,25,23,.05);padding:1px 4px;border-radius:4px}
+    @media (max-width:1000px){.layout{grid-template-columns:1fr}.side{position:static}.list{max-height:none}}
+    @media (max-width:700px){.wrap{width:min(1220px,calc(100% - 10px))}.hero,.panel{border-radius:16px}.panel{padding:10px}.char-row{grid-template-columns:1fr}.facts{grid-template-columns:1fr}.related-item{grid-template-columns:1fr}.rthumb{width:100%;height:120px}}
+    @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+  </style>
+</head>
+<body>
+  <main class="wrap">
+    <section class="hero">
+      <h1>能楽演目データベース</h1>
+      <p>演目名を検索して、<strong>演目名 / あらすじ / 登場人物 / 作成者 / 作成年（成立年代） / 何流か / 特徴</strong> をクリックで確認できます。下部には Japan Search の関連資料も表示できます。</p>
+      <div class="badges">
+        <span class="badge">演目マスタ（ローカルDB）</span>
+        <span class="badge">クリックで詳細表示</span>
+        <span class="badge">Japan Search関連資料を補助表示</span>
+      </div>
+    </section>
+
+    <div class="layout">
+      <aside class="panel side" aria-labelledby="searchTitle">
+        <h2 id="searchTitle">演目検索</h2>
+        <div class="field">
+          <label class="label" for="searchInput">演目名・かな・キーワード</label>
+          <input id="searchInput" type="search" placeholder="例: 道成寺 / 羽衣 / 義経 / 狂女" autocomplete="off" />
+        </div>
+        <div class="toolbar">
+          <button id="clearBtn" class="btn-ghost" type="button">検索クリア</button>
+          <button id="firstBtn" class="btn-primary" type="button">先頭を開く</button>
+        </div>
+        <div class="chips" id="genreChips" aria-label="ジャンル絞り込み"></div>
+        <div class="meta-note" id="metaNote"></div>
+        <div class="count" id="listCount"></div>
+        <div class="list" id="playList" role="listbox" aria-label="演目一覧"></div>
+      </aside>
+
+      <section class="panel" aria-labelledby="detailTitle">
+        <div id="detailArea"></div>
+      </section>
+    </div>
+  </main>
+
+  <script src="./Noh.data.js"></script>
+  <script>
+    const PLAYS = Array.isArray(window.NOH_PLAYS) ? window.NOH_PLAYS.slice() : [];
+    const META = window.NOH_META || {};
+    const JPSEARCH_API = "https://jpsearch.go.jp/api/item/search/jps-cross";
+    const RELATED_DBS = ["noh_museum", "arc_nishikie", "arc_ban", "arc_books", "enpaku_engekijoen"];
+
+    const ui = {
+      search: document.getElementById("searchInput"),
+      clearBtn: document.getElementById("clearBtn"),
+      firstBtn: document.getElementById("firstBtn"),
+      chips: document.getElementById("genreChips"),
+      metaNote: document.getElementById("metaNote"),
+      count: document.getElementById("listCount"),
+      list: document.getElementById("playList"),
+      detail: document.getElementById("detailArea")
+    };
+
+    const state = {
+      query: "",
+      genre: "all",
+      selectedId: null,
+      filtered: [],
+      relatedCache: new Map(),
+      relatedLoading: false,
+      relatedError: ""
+    };
+
+    function esc(v){return String(v ?? "").replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/\"/g,"&quot;").replace(/'/g,"&#39;");}
+    function escAttr(v){return esc(v).replace(/`/g,"&#96;");}
+    function norm(v){return String(v ?? "").normalize("NFKC").toLowerCase().replace(/\s+/g, "");}
+    function h(text, q){ const t = esc(text); const n = norm(q); if(!n) return t; try{ return t.replace(new RegExp(`(${escapeRegExp(q)})`, "gi"), "<mark>$1</mark>"); }catch{return t;} }
+    function escapeRegExp(s){return String(s).replace(/[.*+?^${}()|[\]\\]/g, "\\$&");}
+    function join(arr, sep=" / "){ return Array.isArray(arr) ? arr.filter(Boolean).join(sep) : (arr || "-"); }
+    function first(arr){ return Array.isArray(arr) && arr.length ? arr[0] : ""; }
+
+    function searchable(play){
+      const chars = (play.characters || []).map(c => [c.role, c.name, c.note].filter(Boolean).join(" ")).join(" ");
+      return norm([
+        play.title, play.kana, play.genre, play.creator, play.created, play.schools, play.summary,
+        ...(play.features || []), ...(play.keywords || []), chars
+      ].join(" "));
+    }
+
+    function genreLabel(play){
+      return (play.genre || "").split("（")[0] || play.genre || "その他";
+    }
+
+    function uniqueGenres(){
+      const s = new Set(PLAYS.map(genreLabel).filter(Boolean));
+      return ["all", ...s];
+    }
+
+    function filterPlays(){
+      const q = norm(state.query);
+      state.filtered = PLAYS.filter(play => {
+        if (state.genre !== "all" && genreLabel(play) !== state.genre) return false;
+        if (!q) return true;
+        return searchable(play).includes(q);
+      });
+    }
+
+    function ensureSelection(){
+      if (!state.filtered.length){ state.selectedId = null; return; }
+      if (!state.selectedId || !state.filtered.some(p => p.id === state.selectedId)) {
+        state.selectedId = state.filtered[0].id;
+      }
+    }
+
+    function renderChips(){
+      const genres = uniqueGenres();
+      ui.chips.innerHTML = genres.map(g => {
+        const label = g === "all" ? "すべて" : g;
+        const active = state.genre === g ? " active" : "";
+        return `<button type="button" class="chip${active}" data-genre="${escAttr(g)}">${esc(label)}</button>`;
+      }).join("");
+      ui.chips.querySelectorAll("[data-genre]").forEach(btn => {
+        btn.addEventListener("click", () => {
+          state.genre = btn.dataset.genre || "all";
+          refresh();
+        });
+      });
+    }
+
+    function renderList(){
+      const q = state.query.trim();
+      ui.count.textContent = `表示: ${state.filtered.length} / 全${PLAYS.length}演目` + (q ? `（検索: ${q}）` : "");
+
+      if (!state.filtered.length){
+        ui.list.innerHTML = `<div class="empty">該当する演目がありません。別の表記（かな/漢字）やキーワードで試してください。</div>`;
+        return;
+      }
+
+      ui.list.innerHTML = state.filtered.map(play => {
+        const active = play.id === state.selectedId ? " active" : "";
+        return `
+          <button type="button" class="item${active}" data-id="${escAttr(play.id)}" role="option" aria-selected="${play.id === state.selectedId}">
+            <div class="t">${h(play.title, q)}</div>
+            <div class="k">${h(play.kana, q)}</div>
+            <span class="g">${esc(play.genre)}</span>
+          </button>`;
+      }).join("");
+
+      ui.list.querySelectorAll("[data-id]").forEach(btn => {
+        btn.addEventListener("click", () => selectPlay(btn.dataset.id));
+      });
+    }
+
+    function detailHtml(play){
+      if (!play){
+        return `<div class="empty">演目を選択してください。</div>`;
+      }
+      const related = state.relatedCache.get(play.id);
+      const relatedBlock = renderRelated(play, related);
+      return `
+        <div class="detail-head">
+          <div>
+            <h2 id="detailTitle" class="detail-title">${esc(play.title)}</h2>
+            <p class="detail-kana">${esc(play.kana)}</p>
+            <div class="tags">
+              <span class="tag genre">${esc(play.genre)}</span>
+              <span class="tag">${esc(play.schools || "五流（流儀差あり）")}</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="section">
+          <h3>基本情報</h3>
+          <div class="facts">
+            <div class="k">演目名</div><div class="v">${esc(play.title)}</div>
+            <div class="k">読み</div><div class="v">${esc(play.kana)}</div>
+            <div class="k">作成者</div><div class="v">${esc(play.creator || "不詳")}</div>
+            <div class="k">作成年</div><div class="v">${esc(play.created || "不詳（推定年代のみ）")}</div>
+            <div class="k">何流か</div><div class="v">${esc(play.schools || "五流（流儀差あり）")}</div>
+            <div class="k">分類</div><div class="v">${esc(play.genre || "-")}</div>
+          </div>
+        </div>
+
+        <div class="section">
+          <h3>あらすじ</h3>
+          <div class="summary-box">${esc(play.summary || "データ未入力")}</div>
+        </div>
+
+        <div class="section">
+          <h3>登場人物</h3>
+          <div class="chars">
+            ${(play.characters || []).map(ch => `
+              <div class="char-row">
+                <div class="char-role">${esc(ch.role || "-")}</div>
+                <div class="char-name">${esc(ch.name || "-")}</div>
+                <div class="char-note">${esc(ch.note || "")}</div>
+              </div>`).join("") || `<div class="char-row"><div class="char-role">-</div><div class="char-name">データ未入力</div><div class="char-note"></div></div>`}
+          </div>
+        </div>
+
+        <div class="section">
+          <h3>演目の特徴</h3>
+          <ul class="feature-list">
+            ${(play.features || []).map(f => `<li>${esc(f)}</li>`).join("") || `<li>データ未入力</li>`}
+          </ul>
+          ${(play.keywords && play.keywords.length) ? `<div class="tags" style="margin-top:8px">${play.keywords.map(k => `<span class="tag">${esc(k)}</span>`).join("")}</div>` : ""}
+        </div>
+
+        <div class="section">
+          <div class="related-head">
+            <h3 style="margin:0">関連資料（Japan Search）</h3>
+            <div>
+              <button type="button" class="btn-ghost" id="relatedBtn">関連資料を取得/更新</button>
+            </div>
+          </div>
+          ${relatedBlock}
+        </div>
+
+        <div class="section">
+          <div class="warn">注意: このページの演目マスタは学習・検索用に整理した要約データです。流儀差・小書差・上演系統差があるため、上演の細部は各流儀資料・番組・専門辞典で確認してください。</div>
+          <div class="footer">関連資料API: <code>${esc(JPSEARCH_API)}</code> / DBフィルタ: ${RELATED_DBS.map(db => `<code>${esc(db)}</code>`).join(" ")}</div>
+        </div>
+      `;
+    }
+
+    function renderRelated(play, cache){
+      if (!play) return "";
+      if (!cache) {
+        return `<div class="related-status">まだ取得していません。ボタンを押すと「${esc(play.title)}」で関連資料を検索します。</div>`;
+      }
+      if (cache.loading) {
+        return `<div class="related-status">関連資料を取得中...</div>`;
+      }
+      if (cache.error) {
+        return `<div class="warn">${esc(cache.error)}</div>`;
+      }
+      const items = cache.items || [];
+      if (!items.length) {
+        return `<div class="related-status">関連資料は見つかりませんでした。</div>`;
+      }
+      return `
+        <div class="related-status">${items.length}件表示（キーワード: ${esc(cache.keyword)}） <a href="${escAttr(cache.apiUrl)}" target="_blank" rel="noreferrer">API結果を開く</a></div>
+        <div class="related-list">
+          ${items.map(it => {
+            const c = it.common || {};
+            const thumb = first(c.thumbnailUrl);
+            return `
+              <div class="related-item">
+                <div class="rthumb">${thumb ? `<img src="${escAttr(thumb)}" alt="" loading="lazy" referrerpolicy="no-referrer">` : `<span>画像なし</span>`}</div>
+                <div>
+                  <a href="${escAttr(c.linkUrl || '#')}" target="_blank" rel="noreferrer">
+                    <div class="rt">${esc(c.title || it.id || "無題")}</div>
+                  </a>
+                  <div class="rm">${esc(join(c.contributor))}</div>
+                  <div class="rb">
+                    <span class="mini">DB: ${esc(c.database || "-")}</span>
+                    <span class="mini">提供元: ${esc(c.provider || c.ownerOrg || "-")}</span>
+                    <span class="mini">公開: ${esc(c.contentsAccess || c.access || "-")}</span>
+                  </div>
+                </div>
+              </div>`;
+          }).join("")}
+        </div>`;
+    }
+
+    function renderDetail(){
+      const play = state.filtered.find(p => p.id === state.selectedId) || null;
+      ui.detail.innerHTML = detailHtml(play);
+      const btn = document.getElementById("relatedBtn");
+      if (btn && play) btn.addEventListener("click", () => fetchRelated(play));
+    }
+
+    async function fetchRelated(play){
+      const keyword = `${play.title} 能`;
+      const params = new URLSearchParams({ keyword, size: "6" });
+      for (const db of RELATED_DBS) params.append("f-db", db);
+      const apiUrl = `${JPSEARCH_API}?${params.toString()}`;
+
+      state.relatedCache.set(play.id, { loading: true, items: [], error: "", keyword, apiUrl });
+      if (state.selectedId === play.id) renderDetail();
+
+      try {
+        const res = await fetch(apiUrl, { headers: { Accept: "application/json" } });
+        if (!res.ok) throw new Error(`API ${res.status}`);
+        const data = await res.json();
+        state.relatedCache.set(play.id, {
+          loading: false,
+          items: Array.isArray(data.list) ? data.list : [],
+          error: "",
+          keyword,
+          apiUrl
+        });
+      } catch (e) {
+        console.error(e);
+        state.relatedCache.set(play.id, {
+          loading: false,
+          items: [],
+          error: "関連資料の取得に失敗しました。ネット接続を確認して再試行してください。",
+          keyword,
+          apiUrl
+        });
+      }
+      if (state.selectedId === play.id) renderDetail();
+    }
+
+    function selectPlay(id){
+      state.selectedId = id;
+      renderList();
+      renderDetail();
+    }
+
+    function refresh(){
+      filterPlays();
+      ensureSelection();
+      renderChips();
+      renderList();
+      renderDetail();
+    }
+
+    function init(){
+      if (!PLAYS.length) {
+        ui.detail.innerHTML = `<div class="warn">演目データが読み込めません。<code>Noh.data.js</code> が同じフォルダにあるか確認してください。</div>`;
+        ui.list.innerHTML = `<div class="empty">データ未読込</div>`;
+        return;
+      }
+      ui.metaNote.textContent = `収録演目: ${META.count || PLAYS.length}件 / データ版: ${META.version || "-"}`;
+
+      ui.search.addEventListener("input", () => {
+        state.query = ui.search.value;
+        refresh();
+      });
+
+      ui.clearBtn.addEventListener("click", () => {
+        ui.search.value = "";
+        state.query = "";
+        refresh();
+        ui.search.focus();
+      });
+
+      ui.firstBtn.addEventListener("click", () => {
+        if (state.filtered.length) selectPlay(state.filtered[0].id);
+      });
+
+      PLAYS.sort((a, b) => a.kana.localeCompare(b.kana, "ja"));
+      state.query = "";
+      state.genre = "all";
+      refresh();
+      if (state.selectedId) {
+        const firstPlay = state.filtered.find(p => p.id === state.selectedId);
+        if (firstPlay) fetchRelated(firstPlay);
+      }
+    }
+
+    init();
+  </script>
+</body>
+</html>
