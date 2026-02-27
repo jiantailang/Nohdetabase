@@ -1512,10 +1512,10 @@ window.NOH_PLAYS = [
     id: "hachitataki",
     title: "鉢叩",
     kana: "はちたたき",
-    genre: "四番目物（狂物・芸尽くし）",
+    genre: "狂言",
     creator: "不詳",
     created: "室町時代",
-    schools: "五流",
+    schools: "大蔵流・和泉流（狂言）",
     summary: "主君を訴訟で有利にするため、太郎冠者が瓢箪を叩いて踊る「鉢叩き」に化けて都へ上る。見事な踊りで評判になり、主君の敵を油断させて目的を果たす（または再会する）。",
     characters: [
       { role: "シテ", name: "鉢叩き（太郎冠者）", note: "芸人になりすます" },
@@ -1985,10 +1985,10 @@ window.NOH_PLAYS = [
     id: "kirokuda",
     title: "木六駄",
     kana: "きろくだ",
-    genre: "四番目物（狂言的な能）",
+    genre: "狂言",
     creator: "不詳",
     created: "室町時代",
-    schools: "五流",
+    schools: "大蔵流・和泉流（狂言）",
     summary: "大雪の中、木六駄（薪6頭分）と炭を運ぶ牛追いと太郎冠者が難儀する。茶屋で酒を飲んで暖まるが、酔っ払ってしまい、牛を逃がしたり荷物を落としたりと大騒ぎになる。",
     characters: [
       { role: "シテ", name: "牛追い", note: "運送者" },
@@ -2103,7 +2103,7 @@ window.NOH_PLAYS = [
 ];
 
 window.NOH_META = {
-  version: "2026-02-26-v3",
+  version: "2026-02-27-v4",
   count: window.NOH_PLAYS.length,
-  note: "主要演目の学習・検索用マスタ。流儀差・小書差があるため、上演内容の詳細は番組・流儀資料で確認してください。"
+  note: "主要演目の学習・検索用マスタ。流派「五流」はシテ方五流（観世・宝生・金春・金剛・喜多）を指します。上演内容の詳細は番組・流儀資料で確認してください。"
 };
