@@ -105,11 +105,6 @@
     <section class="hero">
       <h1>能楽演目データベース</h1>
       <p>演目名を検索して、<strong>演目名 / あらすじ / 登場人物 / 作成者 / 作成年（成立年代） / 上演流派 / 五番立 / 特徴</strong> をクリックで確認できます。下部には Japan Search の関連資料も表示できます。</p>
-      <div class="badges">
-        <span class="badge">演目マスタ（ローカルDB）</span>
-        <span class="badge">クリックで詳細表示</span>
-        <span class="badge">Japan Search関連資料を補助表示</span>
-      </div>
     </section>
 
     <div class="layout">
@@ -321,7 +316,7 @@
 
         <div class="section">
           <div class="warn">注意: このページの演目マスタは学習・検索用に整理した要約データです。流儀差・小書差・上演系統差があるため、上演の細部は各流儀資料・番組・専門辞典で確認してください。</div>
-          <div class="footer">関連資料API: <code>${esc(JPSEARCH_API)}</code> / DBフィルタ: ${RELATED_DBS.map(db => `<code>${esc(db)}</code>`).join(" ")}</div>
+          <div class="footer"><a href="./tech.html" target="_blank">技術情報（使用API・データソースについて）</a></div>
         </div>
       `;
     }
