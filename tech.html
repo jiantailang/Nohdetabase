@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>技術情報 | 能楽演目データベース</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@500;700&family=Zen+Kaku+Gothic+New:wght@400;500;700&display=swap" rel="stylesheet" />
+  <style>
+    body{font-family:"Zen Kaku Gothic New",sans-serif;background:#f7f2e7;color:#1a1917;line-height:1.6;padding:20px;max-width:800px;margin:0 auto}
+    h1{font-family:"Shippori Mincho",serif;border-bottom:1px solid rgba(0,0,0,0.1);padding-bottom:10px}
+    h2{font-size:1.1rem;margin-top:30px;color:#a63b18}
+    code{background:rgba(0,0,0,0.06);padding:2px 6px;border-radius:4px;font-family:monospace}
+    ul{padding-left:20px}
+    li{margin-bottom:5px}
+    a{color:#1f5d65}
+    .back-link{display:inline-block;margin-top:40px;text-decoration:none;font-weight:bold}
+  </style>
+</head>
+<body>
+  <h1>技術情報</h1>
+  <p>本データベースの「関連資料」機能では、外部APIを使用して情報を取得・表示しています。</p>
+
+  <h2>使用API</h2>
+  <p>
+    <strong>Japan Search API (jps-cross)</strong><br>
+    <code>https://jpsearch.go.jp/api/item/search/jps-cross</code>
+  </p>
+
+  <h2>参照データベース (DBフィルタ)</h2>
+  <p>以下のデータベースを対象に検索を行っています。</p>
+  <ul>
+    <li><code>noh_museum</code> : 能楽博物館</li>
+    <li><code>arc_nishikie</code> : 立命館大学ARC浮世絵検索</li>
+    <li><code>arc_ban</code> : 立命館大学ARC番付検索</li>
+    <li><code>arc_books</code> : 立命館大学ARC古典籍検索</li>
+    <li><code>enpaku_engekijoen</code> : 早稲田大学演劇博物館 演劇上演記録データベース</li>
+  </ul>
+
+  <a href="./index.html" class="back-link">← データベースに戻る</a>
+</body>
+</html>
