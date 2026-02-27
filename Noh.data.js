@@ -3845,11 +3845,401 @@ window.NOH_PLAYS = [
     ],
     features: ["自殺の防止", "名取川の伝説", "再生"],
     keywords: ["名取川", "入水", "救済", "狂女"]
+  },
+  {
+    id: "mekari",
+    title: "和布刈",
+    kana: "めかり",
+    genre: "脇能物（神物）",
+    creator: "不詳",
+    created: "室町時代",
+    schools: "五流",
+    summary: "早鞆の明神（和布刈明神）の神事の夜、龍神が現れて海水を分け、海底の和布（ワカメ）を刈って神に捧げる。龍神の威徳と豊穣を祝う。",
+    characters: [
+      { role: "前シテ", name: "漁翁", note: "龍神の化身" },
+      { role: "後シテ", name: "龍神", note: "海神" },
+      { role: "ワキ", name: "蔵人", note: "勅使" }
+    ],
+    features: ["海が割れるスペクタクル", "和布刈神事", "龍神の舞"],
+    keywords: ["和布刈", "龍神", "早鞆", "ワカメ"]
+  },
+  {
+    id: "sakahoko",
+    title: "逆矛",
+    kana: "さかほこ",
+    genre: "脇能物（神物）",
+    creator: "宮増",
+    created: "室町時代",
+    schools: "五流",
+    summary: "高千穂の峰にある「天の逆矛」の由来を老人が語る。後場では神が現れ、国生みの際に使われた矛の威徳を示し、天下泰平を寿ぐ。",
+    characters: [
+      { role: "前シテ", name: "老人", note: "神の化身" },
+      { role: "後シテ", name: "神", note: "高千穂の神" },
+      { role: "ワキ", name: "勅使", note: "参詣者" }
+    ],
+    features: ["天孫降臨神話", "三種の神器", "神楽舞"],
+    keywords: ["逆矛", "高千穂", "国生み", "神話"]
+  },
+  {
+    id: "oyashiro",
+    title: "大社",
+    kana: "おやしろ",
+    genre: "脇能物（神物）",
+    creator: "不詳",
+    created: "室町時代",
+    schools: "五流",
+    summary: "出雲大社の神職が、神無月に神々が集まる様子を語る。後場では龍蛇神（神の使い）や神々が現れ、縁結びと国土守護を祝う。",
+    characters: [
+      { role: "前シテ", name: "神職", note: "出雲の神官" },
+      { role: "後シテ", name: "龍蛇神", note: "神の使い" },
+      { role: "ワキ", name: "勅使", note: "参詣者" }
+    ],
+    features: ["神無月（神在月）の伝承", "縁結び", "出雲大社"],
+    keywords: ["出雲大社", "神無月", "縁結び", "龍蛇"]
+  },
+  {
+    id: "touosen",
+    title: "東方朔",
+    kana: "とうぼさく",
+    genre: "脇能物（仙人物）",
+    creator: "金春禅竹",
+    created: "室町時代中期",
+    schools: "五流",
+    summary: "漢の武帝に仕える東方朔が、西王母の桃を盗んで食べたため長寿を得たという伝説。仙人となった東方朔が現れ、不老長寿を祝う。",
+    characters: [
+      { role: "シテ", name: "東方朔", note: "仙人" },
+      { role: "ワキ", name: "漢の武帝", note: "皇帝" }
+    ],
+    features: ["西王母の桃", "不老長寿", "仙人の舞"],
+    keywords: ["東方朔", "西王母", "桃", "長寿"]
+  },
+  {
+    id: "danpu",
+    title: "檀風",
+    kana: "だんぷう",
+    genre: "四番目物（神物）",
+    creator: "不詳",
+    created: "室町時代",
+    schools: "五流",
+    summary: "流罪となった順徳院が佐渡で暮らしていると、神が現れて慰める。院は「檀風（南風）」に乗って都へ帰ることを夢見るが、神はそれを助け、守護を誓う。",
+    characters: [
+      { role: "前シテ", name: "里人", note: "神の化身" },
+      { role: "後シテ", name: "子守明神", note: "神体" },
+      { role: "ワキ", name: "順徳院", note: "流人" }
+    ],
+    features: ["承久の乱の悲劇", "佐渡の風情", "神の加護"],
+    keywords: ["順徳院", "佐渡", "檀風", "子守明神"]
+  },
+  {
+    id: "mitsuyama",
+    title: "三山",
+    kana: "みつやま",
+    genre: "四番目物（執心物）",
+    creator: "不詳",
+    created: "室町時代",
+    schools: "五流",
+    summary: "大和三山（香具山・畝傍山・耳成山）の伝説。二人の男（山）が一人の女（山）を争った古代の恋物語を、三山の精霊たちが現れて語り、舞う。",
+    characters: [
+      { role: "シテ", name: "女の霊", note: "耳成山の精" },
+      { role: "ツレ", name: "男の霊", note: "香具山の精" },
+      { role: "ツレ", name: "男の霊", note: "畝傍山の精" }
+    ],
+    features: ["万葉集の「中大兄皇子」の歌に基づく", "山の擬人化", "古代のロマンス"],
+    keywords: ["大和三山", "三角関係", "万葉集", "精霊"]
+  },
+  {
+    id: "genbuku-soga",
+    title: "元服曽我",
+    kana: "げんぷくそが",
+    genre: "四番目物（現在物）",
+    creator: "不詳",
+    created: "室町時代",
+    schools: "五流",
+    summary: "曽我兄弟の弟・箱王が、仇討ちのために元服して「五郎時致」と名乗る儀式を描く。母との対面や、烏帽子親との絆が描かれる。",
+    characters: [
+      { role: "シテ", name: "曽我五郎", note: "元服する弟" },
+      { role: "ツレ", name: "曽我十郎", note: "兄" },
+      { role: "ワキ", name: "北条時政", note: "烏帽子親" }
+    ],
+    features: ["曽我物の重要エピソード", "元服の儀式", "決意の場面"],
+    keywords: ["曽我兄弟", "元服", "烏帽子親", "仇討ち"]
+  },
+  {
+    id: "choubukugai",
+    title: "調伏曽我",
+    kana: "ちょうぶくそが",
+    genre: "四番目物（現在物）",
+    creator: "宮増",
+    created: "室町時代",
+    schools: "五流",
+    summary: "曽我兄弟が不動明王に仇討ちの成就を祈願する。不動明王の加護を得て、二人は力強く出立する。",
+    characters: [
+      { role: "シテ", name: "不動明王", note: "守護神" },
+      { role: "ワキ", name: "曽我兄弟", note: "祈願者" }
+    ],
+    features: ["護摩祈祷の場面", "不動明王の舞", "曽我兄弟の信仰"],
+    keywords: ["曽我兄弟", "不動明王", "調伏", "祈願"]
+  },
+  {
+    id: "hyoubu-kyo",
+    title: "兵部卿",
+    kana: "ひょうぶきょう",
+    genre: "四番目物（人情物）",
+    creator: "不詳",
+    created: "室町時代",
+    schools: "五流",
+    summary: "兵部卿宮（ひょうぶきょうのみや）が、恋人の死を悼んで供養する。夢の中に恋人の霊が現れ、感謝と別れを告げる。",
+    characters: [
+      { role: "シテ", name: "女の霊", note: "恋人" },
+      { role: "ワキ", name: "兵部卿宮", note: "皇族" }
+    ],
+    features: ["貴公子の悲恋", "夢幻的な再会", "しっとりとした情緒"],
+    keywords: ["兵部卿", "悲恋", "供養", "夢"]
+  },
+  {
+    id: "fushimi",
+    title: "伏見",
+    kana: "ふしみ",
+    genre: "脇能物（神物）",
+    creator: "不詳",
+    created: "室町時代",
+    schools: "五流",
+    summary: "伏見稲荷大社の神職が、神の降臨を待つ。稲荷明神が現れ、五穀豊穣と商売繁盛を約束して舞う。",
+    characters: [
+      { role: "シテ", name: "稲荷明神", note: "神体" },
+      { role: "ワキ", name: "神職", note: "祈る" }
+    ],
+    features: ["稲荷信仰", "神楽舞", "豊穣の予祝"],
+    keywords: ["伏見稲荷", "五穀豊穣", "神楽", "稲荷"]
+  },
+  {
+    id: "kurokawa",
+    title: "黒川",
+    kana: "くろかわ",
+    genre: "四番目物（神物）",
+    creator: "不詳",
+    created: "室町時代",
+    schools: "五流",
+    summary: "陸奥国黒川の明神が、老人の姿で現れて神社の由来を語る。後場では水神としての本性を現し、清らかな水の恵みを讃える。",
+    characters: [
+      { role: "前シテ", name: "老人", note: "神の化身" },
+      { role: "後シテ", name: "黒川明神", note: "水神" },
+      { role: "ワキ", name: "旅僧", note: "参詣者" }
+    ],
+    features: ["水の神徳", "地方の神話", "静かな神能"],
+    keywords: ["黒川", "水神", "陸奥", "明神"]
+  },
+  {
+    id: "kurooka",
+    title: "黒丘",
+    kana: "くろおか",
+    genre: "五番目物（鬼物）",
+    creator: "不詳",
+    created: "室町時代",
+    schools: "五流",
+    summary: "中国の伝説上の鬼・黒丘の鬼が、退治に来た武将と戦う。鬼は妖術を使うが、武将の武勇に敗れる。",
+    characters: [
+      { role: "シテ", name: "黒丘の鬼", note: "異国の鬼" },
+      { role: "ワキ", name: "武将", note: "討伐者" }
+    ],
+    features: ["異国情緒", "鬼退治", "派手な立ち回り"],
+    keywords: ["黒丘", "鬼", "中国", "退治"]
+  },
+  {
+    id: "minobu",
+    title: "身延",
+    kana: "みのぶ",
+    genre: "三番目物（仏教物）",
+    creator: "不詳",
+    created: "室町時代",
+    schools: "五流",
+    summary: "日蓮上人の弟子が身延山を訪れると、日蓮の霊が現れる。日蓮は法華経の功徳と、身延山の聖地としての意義を説き、静かに舞う。",
+    characters: [
+      { role: "シテ", name: "日蓮上人の霊", note: "高僧" },
+      { role: "ワキ", name: "弟子", note: "参詣者" }
+    ],
+    features: ["日蓮宗の聖地", "法華経", "高僧の霊"],
+    keywords: ["日蓮", "身延山", "法華経", "聖地"]
+  },
+  {
+    id: "hokibon",
+    title: "箒木",
+    kana: "ほうきぎ",
+    genre: "三番目物（精霊物）",
+    creator: "世阿弥",
+    created: "室町時代前期",
+    schools: "五流",
+    summary: "信濃国園原にある「箒木（遠くからは見えるが近づくと見えなくなる木）」の伝説。箒木の精が現れ、恋の迷いと儚さを語る。",
+    characters: [
+      { role: "シテ", name: "箒木の精", note: "女の姿" },
+      { role: "ワキ", name: "旅人", note: "木を探す" }
+    ],
+    features: ["『源氏物語』箒木巻の関連", "恋の不可思議", "幻想的な精霊"],
+    keywords: ["箒木", "園原", "恋", "幻"]
+  },
+  {
+    id: "u-no-matsuri",
+    title: "鵜之段",
+    kana: "うのだん",
+    genre: "四番目物（雑能物）",
+    creator: "不詳",
+    created: "室町時代",
+    schools: "五流",
+    summary: "鵜飼の老人が、鵜を使って魚を捕る様子を見せる。殺生の罪と、それを生活の糧とする哀しみが描かれる。『鵜飼』の別演出や小品として扱われることもある。",
+    characters: [
+      { role: "シテ", name: "鵜使い", note: "老人" }
+    ],
+    features: ["鵜飼の所作", "独り芝居的な要素", "短編"],
+    keywords: ["鵜飼", "殺生", "漁師", "鵜"]
+  },
+  {
+    id: "sasaki",
+    title: "佐々木",
+    kana: "ささき",
+    genre: "四番目物（現在物）",
+    creator: "不詳",
+    created: "室町時代",
+    schools: "五流",
+    summary: "佐々木盛綱が、宇治川の先陣争いの功績により賞される。武士の誉れと、主君・頼朝への忠誠が描かれる。",
+    characters: [
+      { role: "シテ", name: "佐々木盛綱", note: "武将" },
+      { role: "ワキ", name: "源頼朝", note: "主君" }
+    ],
+    features: ["宇治川の先陣", "武士の面目", "祝賀"],
+    keywords: ["佐々木盛綱", "宇治川", "先陣", "頼朝"]
+  },
+  {
+    id: "kanemaki",
+    title: "鐘巻",
+    kana: "かねまき",
+    genre: "四番目物（執心物）",
+    creator: "不詳",
+    created: "室町時代",
+    schools: "五流（復曲・稀曲）",
+    summary: "『道成寺』の古形とされる曲。執心を持った女が鐘に巻き付き、蛇体となって現れるが、僧の祈祷によって調伏される。道成寺よりも物語的な要素が強い。",
+    characters: [
+      { role: "シテ", name: "女／蛇体", note: "執心を持つ" },
+      { role: "ワキ", name: "僧", note: "調伏する" }
+    ],
+    features: ["道成寺の原曲", "鐘への執着", "ドラマチックな展開"],
+    keywords: ["道成寺", "鐘", "蛇", "執心"]
+  },
+  {
+    id: "genzai-shichimen",
+    title: "現在七面",
+    kana: "げんざいしちめん",
+    genre: "四番目物（神物）",
+    creator: "不詳",
+    created: "室町時代",
+    schools: "五流",
+    summary: "日蓮上人が七面山で説法中、龍女が現れて成仏を願う。日蓮が鏡を見せると、女は龍の正体を現し、法華経の功徳によって即身成仏を遂げる。",
+    characters: [
+      { role: "シテ", name: "龍女", note: "七面大明神" },
+      { role: "ワキ", name: "日蓮上人", note: "高僧" }
+    ],
+    features: ["『七面』とは異なる演出", "鏡による正体露見", "即身成仏"],
+    keywords: ["日蓮", "七面山", "龍女", "鏡"]
+  },
+  {
+    id: "genzai-nue",
+    title: "現在鵺",
+    kana: "げんざいぬえ",
+    genre: "五番目物（鬼物）",
+    creator: "不詳",
+    created: "室町時代",
+    schools: "五流（稀曲）",
+    summary: "源頼政が鵺を退治する場面を、夢幻能（回想）ではなく現在進行形で描く。緊迫した狩りと退治の様子がリアルに演じられる。",
+    characters: [
+      { role: "シテ", name: "鵺", note: "怪物" },
+      { role: "ワキ", name: "源頼政", note: "退治する武将" }
+    ],
+    features: ["『鵺』の現在能版", "リアルな退治劇", "活劇的要素"],
+    keywords: ["鵺", "頼政", "退治", "現在能"]
+  },
+  {
+    id: "genzai-tadanori",
+    title: "現在忠度",
+    kana: "げんざいただのり",
+    genre: "二番目物（修羅物）",
+    creator: "不詳",
+    created: "室町時代",
+    schools: "五流（稀曲）",
+    summary: "平忠度が岡部六弥太と戦い、討たれるまでの過程を現在進行形で描く。歌人としての側面よりも、武人としての最期に焦点が当てられる。",
+    characters: [
+      { role: "シテ", name: "平忠度", note: "武将" },
+      { role: "ワキ", name: "岡部六弥太", note: "敵将" }
+    ],
+    features: ["『忠度』の現在能版", "一騎打ち", "壮絶な最期"],
+    keywords: ["平忠度", "岡部六弥太", "一ノ谷", "現在能"]
+  },
+  {
+    id: "genzai-tomoe",
+    title: "現在巴",
+    kana: "げんざいともえ",
+    genre: "四番目物（修羅・現在物）",
+    creator: "不詳",
+    created: "室町時代",
+    schools: "五流（稀曲）",
+    summary: "巴御前が木曽義仲の最期を見届け、敵をなぎ倒して落ち延びる様を描く。女性武者としての武勇が強調される。",
+    characters: [
+      { role: "シテ", name: "巴御前", note: "女武者" },
+      { role: "ワキ", name: "敵兵", note: "巴と戦う" }
+    ],
+    features: ["『巴』の現在能版", "薙刀の立ち回り", "女武者の活躍"],
+    keywords: ["巴御前", "義仲", "薙刀", "現在能"]
+  },
+  {
+    id: "genzai-sanemori",
+    title: "現在実盛",
+    kana: "げんざいさねもり",
+    genre: "二番目物（修羅・現在物）",
+    creator: "不詳",
+    created: "室町時代",
+    schools: "五流（稀曲）",
+    summary: "斎藤実盛が手塚光盛と戦い、討ち取られる場面を描く。白髪を染めて戦う老将の意地がリアルに表現される。",
+    characters: [
+      { role: "シテ", name: "斎藤実盛", note: "老将" },
+      { role: "ワキ", name: "手塚光盛", note: "敵将" }
+    ],
+    features: ["『実盛』の現在能版", "老将の奮戦", "首実検"],
+    keywords: ["斎藤実盛", "手塚光盛", "白髪", "現在能"]
+  },
+  {
+    id: "genzai-kiyotsune",
+    title: "現在清経",
+    kana: "げんざいきよつね",
+    genre: "二番目物（修羅・現在物）",
+    creator: "不詳",
+    created: "室町時代",
+    schools: "五流（稀曲）",
+    summary: "平清経が入水を決意し、月夜に笛を吹いて最期を迎えるまでの心情を現在進行形で描く。",
+    characters: [
+      { role: "シテ", name: "平清経", note: "公達" },
+      { role: "ワキ", name: "家臣", note: "見守る" }
+    ],
+    features: ["『清経』の現在能版", "入水直前の心理", "笛の音"],
+    keywords: ["平清経", "入水", "笛", "現在能"]
+  },
+  {
+    id: "genzai-atsumori",
+    title: "現在敦盛",
+    kana: "げんざいあつもり",
+    genre: "二番目物（修羅・現在物）",
+    creator: "不詳",
+    created: "室町時代",
+    schools: "五流（稀曲）",
+    summary: "平敦盛が熊谷直実に呼び止められ、一騎打ちの末に討たれる場面を描く。若武者の悲劇的な最期が強調される。",
+    characters: [
+      { role: "シテ", name: "平敦盛", note: "若武者" },
+      { role: "ワキ", name: "熊谷直実", note: "敵将" }
+    ],
+    features: ["『敦盛』の現在能版", "海岸での一騎打ち", "無常"],
+    keywords: ["平敦盛", "熊谷直実", "一ノ谷", "現在能"]
   }
 ];
 
 window.NOH_META = {
-  version: "2026-02-27-v5",
+  version: "2026-02-27-v6",
   count: window.NOH_PLAYS.length,
   note: "主要演目の学習・検索用マスタ。流派「五流」はシテ方五流（観世・宝生・金春・金剛・喜多）を指します。上演内容の詳細は番組・流儀資料で確認してください。"
 };
