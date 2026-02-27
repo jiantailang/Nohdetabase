@@ -104,7 +104,7 @@
   <main class="wrap">
     <section class="hero">
       <h1>能楽演目データベース</h1>
-      <p>演目名を検索して、<strong>演目名 / あらすじ / 登場人物 / 作成者 / 作成年（成立年代） / 何流か / 特徴</strong> をクリックで確認できます。下部には Japan Search の関連資料も表示できます。</p>
+      <p>演目名を検索して、<strong>演目名 / あらすじ / 登場人物 / 作成者 / 作成年（成立年代） / 上演流派 / 五番立 / 特徴</strong> をクリックで確認できます。下部には Japan Search の関連資料も表示できます。</p>
       <div class="badges">
         <span class="badge">演目マスタ（ローカルDB）</span>
         <span class="badge">クリックで詳細表示</span>
@@ -279,8 +279,8 @@
             <div class="k">読み</div><div class="v">${esc(play.kana)}</div>
             <div class="k">作成者</div><div class="v">${esc(play.creator || "不詳")}</div>
             <div class="k">作成年</div><div class="v">${esc(play.created || "不詳（推定年代のみ）")}</div>
-            <div class="k">何流か</div><div class="v">${esc(play.schools || "五流（流儀差あり）")}</div>
-            <div class="k">分類</div><div class="v">${esc(play.genre || "-")}</div>
+            <div class="k">上演流派</div><div class="v">${esc(play.schools || "五流（流儀差あり）")}</div>
+            <div class="k">五番立</div><div class="v">${esc(play.genre || "-")}</div>
           </div>
         </div>
 
